@@ -6,7 +6,8 @@ import time
 pygame.init()
 screen = pygame.display.set_mode((1000, 562), pygame.RESIZABLE)
 running = True
-
+player = Player(100, 100)
+listner = EventHandler()
 FPS = 60
 
 class Player:
@@ -16,21 +17,28 @@ class Player:
   def render(self):
     pygame.draw.circle(screen, (222,63,74), (self.x + 100, self.y + 100), 100, 2)
 
-player = Player(0, 0)
-while running:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            running = False
-        if event.type == KEYDOWN:
-              if event.key == K_UP:
-                player.y += 1
-              if event.key == K_DOWN:
-                player.y -= 1
-              if event.key == K_RIGHT:
-                player.x += 1
-              if event.key == K_LEFT:
-                player.x -= 1
+class Key_Event:
+  def __init__(self, key):
+    pass
 
-    pygame.display.flip()
-    pygame.draw.circle(screen, (245, 150, 25), (100 + player.x, 100 + player.y), 100, 10)
-    time.sleep(1/FPS)
+class EventHandler:
+  def __init__(self):
+    self.keys = []
+
+  def addEventListner():
+    # We will use this function to add events to listen for
+    pass
+  def loop(self, events):
+    for event in events:
+      if event.type == QUIT:
+        running = False
+      value = True if event.type == KEYDOWN else False
+      # Put a switch statement and pass value variable to the thing ☜(ﾟヮﾟ☜)
+          
+
+while running:
+  listner.loop(pygame.events.get())
+
+  pygame.display.flip()
+  player.render()
+  time.sleep(1/FPS)
