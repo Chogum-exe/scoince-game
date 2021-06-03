@@ -1,5 +1,6 @@
 from json import load
 from random import gauss
+from random import randint
 
 def GenerateQuestions(type, topic, weight, falloff):
     # type = (MultipleChoice or TrueFalse
@@ -8,4 +9,7 @@ def GenerateQuestions(type, topic, weight, falloff):
     JsonData = json.load(QuestionFile)
     WeightedRandom = round(random.guass(weight, falloff), 1)
     GeneratedQuestion = JsonData[WeightedRandom]
-    return GeneratedQuestion
+    if len(GeneratedQuestion) > 0:
+        return GeneratedQuestion[random.randint(0, len(GeneratedQuestion))]
+    else:
+        return GeneratedQuestion
