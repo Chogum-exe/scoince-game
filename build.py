@@ -3,8 +3,8 @@ import subprocess
 amazon = ['pygame', 'pyinstaller']
 
 for package in amazon:
-    subprocess.call(['pip', 'install', package])
+    subprocess.call(['py', '-m', 'pip', 'install', package])
 
 print('Spawning new python window')
-subprocess.call(['python', 'main.py'])
+subprocess.call(['py', './main.py'])
 # subprocess.call(['pyinstaller', '--onefile', 'main.py'])
