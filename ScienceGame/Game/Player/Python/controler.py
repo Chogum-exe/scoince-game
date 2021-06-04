@@ -1,5 +1,4 @@
 from pygame import key
-
 class Key(object):
     def wasd():
         keys = pygame.key.get_pressed()
@@ -9,6 +8,7 @@ class Key(object):
         down  = keys[pygame.K_s] or keys[pygame.K_DOWN]
         right = keys[pygame.K_d] or keys[pygame.K_RIGHT]
         return (right - left), (down - up)
+        
     def key(key, function):
         if keys[pygame.K_ + key] = 1:
             function()

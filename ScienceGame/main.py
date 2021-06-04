@@ -37,8 +37,10 @@ class Action:
 class EventHandler:
   def __init__(self):
     self.actions = []
+
   def addEventListner(self, key, callback):
     self.actions.append(Action(key, callback))
+
   def loop(self, events):
     global running
     for event in events:
@@ -48,7 +50,7 @@ class EventHandler:
       for action in self.actions:
         if action.key == event.key:
           action.callback(action.key, value)
-          
+
 player = Player(100, 100)
 listener = EventHandler()
 
