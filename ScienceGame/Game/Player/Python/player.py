@@ -1,11 +1,10 @@
 import pygame
-from .controller import KeyHandler
 
 class Player:
-    def __init__(self, x=0, y=0):
+    def __init__(self, x, y, control):
         self.x = x
         self.y = y
-        self.controller = KeyHandler()
+        self.controller = control
 
     def move(self):
         x_dir, y_dir = self.controller.wasd()
