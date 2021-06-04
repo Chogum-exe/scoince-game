@@ -13,19 +13,29 @@ class Player:
     self.x = x
     self.y = y
     self.vel = {x:0, y:0}
+
   def events(listener):
     listener.addEventListner(ord('w'), self.move)
-  def move(key, pressed):
-    key = char(key)
+    listener.addEventListner(ord('a'), self.move)
+    listener.addEventListner(ord('s'), self.move)
+    listener.addEventListner(ord('d'), self.move)
+    listener.addEventListner(K_UP, self.move)
+    listener.addEventListner(K_LEFT, self.move)
+    listener.addEventListner(K_DOWN, self.move)
+    listener.addEventListner(K_RIGHT, self.move)
+
+  def move(self, key, pressed):
+    print(key)
     if pressed:
-      if key == 'w':
+      if key == K_UP:
         self.vel.y += 1
-      if key == 'a':
+      if key == K_LEFT:
         self.vel.x -= 1
-      if key == 's':
-        self.vel.x += 1
-      if key == 'd':
+      if key == K_DOWN:
         self.vel.y -= 1
+      if key == K_RIGHT:
+        self.vel.y += 1
+        
   def render(self):
     pygame.draw.circle(screen, (222,63,74), (self.x + 100, self.y + 100), 100, 2)
 
