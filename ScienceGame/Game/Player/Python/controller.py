@@ -1,7 +1,7 @@
-from pygame import key
+import pygame
 
 class KeyHandler(object):
-    def wasd():
+    def wasd(self):
         keys = pygame.key.get_pressed()
 
         left  = keys[pygame.K_w] or keys[pygame.K_UP]
@@ -10,7 +10,7 @@ class KeyHandler(object):
         right = keys[pygame.K_d] or keys[pygame.K_RIGHT]
         return (right - left), (down - up)
         
-    def key(key, function):
+    def key(self, key, function):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ + key] == 1:
             function()

@@ -1,5 +1,5 @@
 import pygame
-from controller import KeyHandler
+from .controller import KeyHandler
 
 class Player:
     def __init__(self, x=0, y=0):

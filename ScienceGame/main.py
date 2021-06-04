@@ -12,5 +12,5 @@ player = Player(100, 100)
 
 while running:
   pygame.display.flip()
-  player.run()
+  player.run(screen)
   time.sleep(1/FPS)
