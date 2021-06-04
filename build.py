@@ -1,6 +1,7 @@
 import subprocess
 import os
 import shutil
+
 amazon = ['pygame', 'pyinstaller', 'shutil']
 for package in amazon:
     if os.name == 'nt':
@@ -11,15 +12,16 @@ for package in amazon:
 # print('Game Builder: Spawning new python window')
 # subprocess.call(['python', 'main.py'])
 
-print(os.name)
+print('Game Builder: Detected os by name of: ' + os.name)
 if os.name == 'nt':
-    APP_PATH = "C:/Somthing/Somthing/Soemthing"
+    APP_PATH = "C:\Program"
 if os.name == 'posix':
     APP_PATH = "/Applications"
 
-destination = shutil.move('/Users/ryan/Documents/GitHub/Host/scoince-game', APP_PATH, copy_function = shutil.copytree)
+print(os.getcwd())
+destination = shutil.move(os.getcwd(), APP_PATH, copy_function = shutil.copytree)
 # os.getcwd()
-print('Game Builder: moved to: ' + destination)
+print('Game Builder: moved to: ' + str(destination))
 
 
 # subprocess.call(['pyinstaller', '--onefile', 'main.py'])
