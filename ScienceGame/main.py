@@ -13,6 +13,7 @@ class Player:
     self.x = x
     self.y = y
     self.vel = {x:0, y:0}
+    self.fric = 0.8
 
   def events(listener):
     listener.addEventListner(ord('w'), self.move)
@@ -35,7 +36,11 @@ class Player:
         self.vel.y -= 1
       if key == K_RIGHT:
         self.vel.y += 1
-        
+    self.vel.x *= self.fric
+    self.vel.y *= self.fric
+    self.x += self.vel.x
+    self.y += self.vel.y
+
   def render(self):
     pygame.draw.circle(screen, (222,63,74), (self.x + 100, self.y + 100), 100, 2)
 

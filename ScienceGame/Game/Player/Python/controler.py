@@ -10,5 +10,6 @@ class Key(object):
         return (right - left), (down - up)
         
     def key(key, function):
-        if keys[pygame.K_ + key] = 1:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ + key] == 1:
             function()
