@@ -1,5 +1,6 @@
 from pygame import key
-class Key(object):
+
+class KeyHandler(object):
     def wasd():
         keys = pygame.key.get_pressed()
 
