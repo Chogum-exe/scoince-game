@@ -7,14 +7,13 @@ def GenerateQuestions(type, topic, weight, falloff):
     # topic = (Biology, Chemistry, Computer, or Earth)
     QuestionFile = open(type + '/' + topic + '.json', 'r')
     JsonData = json.load(QuestionFile)
+    print(JsonData)
 
-    WeightedRandom = str(round(np.random.normal(weight, falloff), 0))
+    WeightedRandom = str(int(round(np.random.normal(weight, falloff), 0)))
     print(WeightedRandom)
 
     GeneratedQuestion = JsonData[WeightedRandom]
     if len(GeneratedQuestion) > 0:
-        return random.choice(GeneratedQuestion)
+        Q = random.choice(GeneratedQuestion)
         # random.randint(0, len(GeneratedQuestion))
-    else:
-        return GeneratedQuestion
 print(GenerateQuestions('MultipleChoice', 'Computer', 1, 0))

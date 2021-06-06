@@ -1,0 +1,4 @@
+"People": [
+  "Bob": {"Age":1, "Gender": "M"},
+  "cate": {"Age":12, "Gender": "F"},
+]
