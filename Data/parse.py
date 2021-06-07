@@ -1,36 +1,26 @@
-def Compare(Lines):
-    CSVData = Lines.split(',')
-    QType   = CSVData[0]
-    QTopic  = CSVData[1]
-    QDiff   = CSVData[2]
-    return QType + QType + QTopic + QDiff
+import nested_dict as nd
 
 with open('ScienceGame - Data.csv') as csv:
-    QuestionDiff = []
-    for CurrentSearch in csv.readlines()[1:]:
-        Find = Compare(CurrentSearch)
-        print(Find)
-        for SimilarSearches in csv.readlines()[1:]:
-            Find2 = Compare(SimilarSearches)
-            if Find == Find2:
-                SimilarData = SimilarSearches.split(',')
-                SimilarDiff = SimilarData[2]
-                QuestionDiff[SimilarDiff] = SimilarSearches
-                # Makes a python dict by the format Difficulty: [Question1], [Question2]
-    for QuestionStrength in range(1, 20):
-        # f.write('\t\"' + QuestionStrength + '\" : ' + '[{' + '\n')
-        # Here we start the json dict
-        for Questions in QuestionDiff[QuestionStrength]:
-            CSVData = Questions.split(',')
-            QType   = CSVData[0]
-            QTopic  = CSVData[1]
-            QDiff   = CSVData[2]
-            QPrompt = CSVData[3]
-            QA1     = CSVData[4]
-            QA2     = CSVData[5]
-            if len(CSVData) > 5:
-                QA3 = CSVData[6]
-            if len(CSVData) > 6:
-                QA4 = CSVData[7]
-            # Here we add json data
-        f.write('\t\t' + '\"Question\"' + QPrompt)
+    QuestionDiff = nd.nested_dict()
+    for line in csv.readlines()[1:]:
+        print(line)
+        QData = line.strip().split(',')
+        print(QData)
+        QType = QData[0]
+        QTopic = QData[1]
+        QDiff = QData[2]
+        Qquestion = QData[3]
+        Qanswers =  []
+        for a in QData[4:8]:
+            if a:
+                Qanswers.append(a)
+        Qresult = QData[8]
+        data = {
+            'question': Qquestion,
+            'answer': Qanswers,
+            'result': Qresult,
+        }
+        QuestionDiff[QType][QTopic][QDiff] = data
+        print(QuestionDiff)
+    import json
+    print(json.dumps(QuestionDiff, indent=4))
