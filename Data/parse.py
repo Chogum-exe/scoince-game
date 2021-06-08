@@ -1,10 +1,12 @@
+import os
+import json
 import nested_dict as nd
 
-with open('ScienceGame - Data.csv') as csv:
-    QuestionDiff = nd.nested_dict()
+with open('ScienceGame - Data.tsv') as csv:
+    Questions = nd.nested_dict()
     for line in csv.readlines()[1:]:
         print(line)
-        QData = line.strip().split(',')
+        QData = line.strip().split('\t')
         print(QData)
         QType = QData[0]
         QTopic = QData[1]
@@ -20,7 +22,11 @@ with open('ScienceGame - Data.csv') as csv:
             'answer': Qanswers,
             'result': Qresult,
         }
-        QuestionDiff[QType][QTopic][QDiff] = data
-        print(QuestionDiff)
-    import json
-    print(json.dumps(QuestionDiff, indent=4))
+        Questions[QType][QTopic][QDiff] = data
+        print(Questions)
+
+with open (os.path.dirname(os.getcwd()) + '/ScienceGame/Game/Questions/Question.json', 'w', encoding='utf-8') as file:
+    json.dump(Questions, file, indent=4)
+# with open
+#     json.dump()
+#     print(json.dumps(Questions, indent=4))

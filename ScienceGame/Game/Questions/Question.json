@@ -1,0 +1,28 @@
+{
+    "Multiple": {
+        "Computer": {
+            "1": {
+                "question": "This is a test",
+                "answer": [
+                    "Answer1",
+                    "Answer 2",
+                    "Answer3",
+                    "Answer4"
+                ],
+                "result": "2"
+            }
+        }
+    },
+    "TrueFalse": {
+        "Biology": {
+            "1": {
+                "question": "Is cheese a food",
+                "answer": [
+                    "Yes",
+                    "No"
+                ],
+                "result": "1"
+            }
+        }
+    }
+}
