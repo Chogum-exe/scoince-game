@@ -19,7 +19,7 @@ while running:
       running = False
   
   pygame.display.flip()
-  pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, WIDTH, HEIGHT))
+  screen.fill((0,255,255))
   
   player.run(screen)
   time.sleep(1/FPS)

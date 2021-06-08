@@ -1,9 +1,10 @@
 import pygame
 
 class SpriteLoader(object):
-    def __init__(self, filename):
+    def __init__(self, filename, scale_to):
         try:
             self.sheet = pygame.image.load(filename).convert()
+            self.sheet = pygame.transform.scale(self.sheet, scale_to)
         except pygame.error:
             print('Unable to load spritesheet image:', filename)
             raise (SystemExit, message)
@@ -14,7 +15,7 @@ class SpriteLoader(object):
         image = pygame.Surface(rect.size).convert()
         image.blit(self.sheet, (0, 0), rect)
         if colorkey is not None:
-            if colorkey is -1:
+            if colorkey == -1:
                 colorkey = image.get_at((0,0))
             image.set_colorkey(colorkey, pygame.RLEACCEL)
         return image
