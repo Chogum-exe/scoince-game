@@ -32,12 +32,8 @@ def main():
 
       bgd.show(screen, x_offset, y_offset)
 
-      # DEBUG
-      count += 1
-      if not (count % 2):
-          x_offset += 1
-      if not (count % 3):
-          y_offset += 1
+      x_offset += 1
+      y_offset += 1
 
       time.sleep(1/FPS)
 

@@ -28,40 +28,54 @@ class ScrollingBackround():
         img_path = os.path.join(self.path, 'images{}-{}.png'.format(x, y))
         return pygame.image.load(img_path).convert()
 
+    def _sector(self, x_offset, y_offset, screen_x, screen_y):
+        left   = math.floor(x_offset / self.tilesize)
+        top    = math.floor(y_offset / self.tilesize)
+
+        right  = math.floor((screen_x + x_offset)/ self.tilesize)
+
+        bottom = math.floor((screen_y + y_offset) / self.tilesize)
+        return (left, top, right, bottom)
+        # Divide screen by 2?
+
+    # def _tile(self, x, y, screen_x, screen_y):
+    #     s = _sector(x, y, screen_x, screen_y)
+    #     for x_pos in range(s[0]):
+    #         for y_pos in range(s[1]):
+    #             if not self.cache[(x_pos, y_pos)]:
+    #                 self.cache[(x_pos, y_pos)] = _load(x_pos, y_pos)
+
+
+    def _draw_box(self, screen, x_offset, y_offset, x, y):
+        pygame.draw.line(
+            screen, (0, 0, 0),
+            (x*self.tilesize-x_offset, y*self.tilesize-y_offset),
+            (x*self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
+        )
+        pygame.draw.line(
+            screen, (0, 0, 0),
+            (x*self.tilesize-x_offset, y*self.tilesize-y_offset),
+            (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize-y_offset),
+        )
+        pygame.draw.line(
+            screen, (0, 0, 0),
+            (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize-y_offset),
+            (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
+        )
+        pygame.draw.line(
+            screen, (0, 0, 0),
+            (x*self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
+            (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
+        )
+
     def show(self, screen, x_offset, y_offset):
-        for x in range(X_TILE_COUNT):
-            for y in range(Y_TILE_COUNT):
+        screen_x, screen_y = screen.get_size()
+        left, top, right, bottom = self._sector(x_offset, y_offset, screen_x, screen_y)
+        for x in range(left, right + 1):
+            for y in range(top, bottom + 1):
                 img = self.cache[(x,y)]
                 screen.blit(img, (x*self.tilesize-x_offset, y*self.tilesize-y_offset))
-
-                # DEBUG
-    def show(self, screen, x_offset, y_offset):
-        for x in range(X_TILE_COUNT):
-            for y in range(Y_TILE_COUNT):
-                img = self.cache[(x,y)]
-                screen.blit(img, (x*self.tilesize-x_offset, y*self.tilesize-y_offset))
-
-                # DEBUG
-                # pygame.draw.line(
-                #     screen, (0, 0, 0),
-                #     (x*self.tilesize-x_offset, y*self.tilesize-y_offset),
-                #     (x*self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
-                # )
-                # pygame.draw.line(
-                #     screen, (0, 0, 0),
-                #     (x*self.tilesize-x_offset, y*self.tilesize-y_offset),
-                #     (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize-y_offset),
-                # )
-                # pygame.draw.line(
-                #     screen, (0, 0, 0),
-                #     (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize-y_offset),
-                #     (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
-                # )
-                # pygame.draw.line(
-                #     screen, (0, 0, 0),
-                #     (x*self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
-                #     (x*self.tilesize+self.tilesize-x_offset, y*self.tilesize+self.tilesize-y_offset),
-                # )
+                # self._draw_box(screen, x_offset, y_offset, x, y)
 
 
 # ============================================================================
