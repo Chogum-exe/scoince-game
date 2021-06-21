@@ -11,7 +11,6 @@ X_TILE_COUNT = 10
 Y_TILE_COUNT = 10
 
 class ScrollingBackround():
-
     def __init__(self, screen_x, screen_y, path=PATH, tilesize=TILESIZE):
         self.path = path
         self.tilesize = tilesize
@@ -19,10 +18,6 @@ class ScrollingBackround():
         self.screen_y = screen_y
         self.cache = {}
 
-        # Load up all the tiles
-        for x in range(X_TILE_COUNT):
-            for y in range(Y_TILE_COUNT):
-                self.cache[(x,y)] = self._load(x, y)
     def _load(self, x, y):
         img_path = os.path.join(self.path, 'images{}-{}.png'.format(x, y))
         return pygame.image.load(img_path).convert()
