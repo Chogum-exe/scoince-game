@@ -19,8 +19,8 @@ class Player:
         self.y += y_dir
 
     def render(self, screen):
-        frame = self.pygame.Rect(self.x, self.y, self.size, self.size)
-        screen.blit(self.sprites[0], (self.x, self.y), frame)
+        #The renderer is displaying this black area and isn't displaying the surface properly with one charater
+        screen.blit(self.sprites[0], (self.x, self.y))
     
     def run(self, screen):
         self.move()

@@ -13,7 +13,7 @@ class SpriteLoader(object):
         "Loads image from x,y,x+offset,y+offset"
         rect = pygame.Rect(rectangle)
         image = pygame.Surface(rect.size).convert()
-        image.blit(self.sheet, (0, 0), rect)
+        image.blit(self.sheet, rect)
         if colorkey is not None:
             if colorkey == -1:
                 colorkey = image.get_at((0,0))
