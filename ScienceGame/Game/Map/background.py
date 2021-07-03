@@ -2,7 +2,6 @@ from PIL import Image
 import pygame
 import sys
 import os
-import os.path
 import math
 
 PATH = 'images'
@@ -17,10 +16,23 @@ class ScrollingBackround():
         self.screen_x = screen_x
         self.screen_y = screen_y
         self.cache = {}
+        self.error_img = pygame.image.load(path + '/error.png').convert()
+        self.currenttile_x = -1
+        self.currenttile_y = -1
 
     def _load(self, x, y):
-        img_path = os.path.join(self.path, 'images{}-{}.png'.format(x, y))
-        return pygame.image.load(img_path).convert()
+        try:
+            img_path = os.path.join(self.path, 'images{}-{}.png'.format(x, y))
+            return pygame.image.load(img_path).convert()
+        except:
+            return self.error_img
+
+    # def tileeval(self, x, y):
+    #     if abs(int(x / self.tilesize) - self.currenttile_x) > 0:
+    #         self.currenttile_x = x / self.tilesize
+    #         self.currenttile_y = y / self.tilesize
+    #         print('new tile')
+
 
     def _sector(self, x_offset, y_offset, screen_x, screen_y):
         left   = math.floor(x_offset / self.tilesize)
@@ -29,8 +41,7 @@ class ScrollingBackround():
         bottom = math.floor((screen_y + y_offset) / self.tilesize)
         return (left, top, right, bottom)
 
-    def _tile(self, x, y, screen_x, screen_y, pos):
-        left, top, right, bottom = pos
+    def _tile(self, x, y, screen_x, screen_y, left, top, right, bottom):
         for x_pos in range(left, right + 1):
             for y_pos in range(top, bottom + 1):
                 if self.cache.get((x_pos, y_pos)) is None:
@@ -60,11 +71,11 @@ class ScrollingBackround():
         )
     def show(self, screen, x_offset, y_offset):
         screen_x, screen_y = screen.get_size()
-
+        # self.tileeval(x_offset, y_offset)
         s = self._sector(x_offset, y_offset, screen_x, screen_y)
-        self._tile(x_offset, y_offset, screen_x, screen_y, s)
-
         left, top, right, bottom = s
+        self._tile(x_offset, y_offset, screen_x, screen_y, left, top, right, bottom)
+        
         for x in range(left, right + 1):
             for y in range(top, bottom + 1):
                 img = self.cache[(x,y)]
