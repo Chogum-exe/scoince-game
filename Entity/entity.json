@@ -1,9 +1,0 @@
-{
-  "Entity": {
-      "Name": "Bill",
-      "Type": "NPC",
-      "Location": [10, 10],
-      "Image": "0-011.png",
-      "Lines": ["abc", "sing with me"]
-    }
-}

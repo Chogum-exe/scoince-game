@@ -21,7 +21,7 @@ import os
 #we made this together in live share, so we put this here for memories UwU
 import pygame
 loadImages = {}
-def Show(image, type, frame):
+def Save(image, type, frame):
     imgCache = loadImages[(image, frame)]
     if loadImages.get((image, frame)) is None:
         # Possible bug if NPC name ends in a number

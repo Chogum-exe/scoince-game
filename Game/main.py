@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import pygame
 import time
-from Game.Player.Python.player import Player
+from Map.background import ScrollingBackround
 
 pygame.init()
 screen = pygame.display.set_mode((1000, 562))
@@ -11,7 +11,7 @@ pygame.display.set_caption("Science Game :D")
 running = True
 FPS = 60
 
-player = Player(100, 100, pygame)
+ScrollingBackround(0, 0, TILESIZE=50)
 
 while running:
   for event in pygame.event.get():
