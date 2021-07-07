@@ -6,5 +6,3 @@ class Entity(Image):
         # On clik
         #stats
         # Gif like stuff
-    
-    
