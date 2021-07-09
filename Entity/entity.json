@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Bill",
+    "Location": [10, 10],
+    "Image": "0-0111.png",
+    "Lines": ["abc", "sing with me"]
+  },
+  {
+    "Name": "Meowscles",
+    "Location": [50, 10],
+    "Image": "0-0211.png",
+    "Lines": ["def", "sing with me"]
+  },
+  {
+    "Name": "Sarah",
+    "Location": [20, 10],
+    "Image": "0-0311.png",
+    "Lines": ["ghi", "sing with me"]
+  }
+]
