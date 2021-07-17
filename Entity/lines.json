@@ -1,1 +1,14 @@
-{"Bill": ["abc", "sing with me"], "Meowscles": ["def", "sing with me"], "Sarah": ["ghi", "sing with me"]}
+{
+    "Bill": [
+        "abc",
+        "sing with me"
+    ],
+    "Meowscles": [
+        "def",
+        "sing with me"
+    ],
+    "Sarah": [
+        "ghi",
+        "sing with me"
+    ]
+}

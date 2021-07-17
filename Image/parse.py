@@ -17,7 +17,7 @@ def imgcrop(input, xPieces, yPieces):
             print(box)
             a = im.crop(box)
             try:
-                a.save("../ScienceGame/Game/Map/images/" + 'images' + str(i) + "-" + str(j) + file_extension)
+                a.save("../ScienceGame/Map/images/" + 'images' + str(i) + "-" + str(j) + file_extension)
             except:
                 print('error')
 

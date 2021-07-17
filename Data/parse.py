@@ -25,7 +25,7 @@ with open('ScienceGame - Data.tsv') as csv:
         Questions[QType][QTopic][QDiff] = data
         print(Questions)
 
-with open (os.path.dirname(os.getcwd()) + '/ScienceGame/Game/Questions/Question.json', 'w', encoding='utf-8') as file:
+with open (os.path.dirname(os.getcwd()) + '/ScienceGame/Questions/Question.json', 'w', encoding='utf-8') as file:
     json.dump(Questions, file, indent=4)
 # with open
 #     json.dump()
